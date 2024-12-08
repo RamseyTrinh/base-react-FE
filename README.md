@@ -62,7 +62,6 @@ React JS Advanced Folder Structure
     ├── App.jsx
     ├── index.css
     ├── main.jss
-|
 ├── .gitignore
 ├── package-lock.json
 ├── package.json
