@@ -1,17 +1,8 @@
-import React, { useState } from 'react';
-import {
-    Card,
-    TextField,
-    Button,
-    Alert,
-    Box,
-    IconButton,
-    InputAdornment,
-    Typography,
-} from '@mui/material';
-import { Visibility, VisibilityOff, LockOutlined, PersonOutline } from '@mui/icons-material';
-import { PATHS } from '@/routers/path';
-import { register } from '@/services/auth';
+import React, {useState} from 'react';
+import {Alert, Box, Button, Card, IconButton, InputAdornment, TextField, Typography,} from '@mui/material';
+import {LockOutlined, PersonOutline, Visibility, VisibilityOff} from '@mui/icons-material';
+import {PATHS} from '@/routers/path';
+import {register} from '@/services/auth';
 
 const RegisterPage = () => {
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -26,7 +17,7 @@ const RegisterPage = () => {
     });
 
     const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
+        setValues({...values, [prop]: event.target.value});
     };
 
     const handleSubmit = async (event) => {
@@ -63,9 +54,9 @@ const RegisterPage = () => {
                     textAlign: 'center',
                 }}
             >
-                <Typography variant="h5" sx={{ mb: 2 }}>Đăng ký</Typography>
-                {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
-                {success && <Alert severity="success" sx={{ mb: 2 }}>{success}</Alert>}
+                <Typography variant="h5" sx={{mb: 2}}>Đăng ký</Typography>
+                {error && <Alert severity="error" sx={{mb: 2}}>{error}</Alert>}
+                {success && <Alert severity="success" sx={{mb: 2}}>{success}</Alert>}
                 <form onSubmit={handleSubmit}>
                     <TextField
                         fullWidth
@@ -76,11 +67,11 @@ const RegisterPage = () => {
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
-                                    <PersonOutline />
+                                    <PersonOutline/>
                                 </InputAdornment>
                             ),
                         }}
-                        sx={{ mb: 2 }}
+                        sx={{mb: 2}}
                         required
                     />
                     <TextField
@@ -92,11 +83,11 @@ const RegisterPage = () => {
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
-                                    <PersonOutline />
+                                    <PersonOutline/>
                                 </InputAdornment>
                             ),
                         }}
-                        sx={{ mb: 2 }}
+                        sx={{mb: 2}}
                         required
                     />
                     <TextField
@@ -109,7 +100,7 @@ const RegisterPage = () => {
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
-                                    <LockOutlined />
+                                    <LockOutlined/>
                                 </InputAdornment>
                             ),
                             endAdornment: (
@@ -118,12 +109,12 @@ const RegisterPage = () => {
                                         onClick={() => setPasswordVisible(!passwordVisible)}
                                         edge="end"
                                     >
-                                        {passwordVisible ? <Visibility /> : <VisibilityOff />}
+                                        {passwordVisible ? <Visibility/> : <VisibilityOff/>}
                                     </IconButton>
                                 </InputAdornment>
                             ),
                         }}
-                        sx={{ mb: 2 }}
+                        sx={{mb: 2}}
                         required
                     />
                     <TextField
@@ -136,7 +127,7 @@ const RegisterPage = () => {
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
-                                    <LockOutlined />
+                                    <LockOutlined/>
                                 </InputAdornment>
                             ),
                             endAdornment: (
@@ -145,12 +136,12 @@ const RegisterPage = () => {
                                         onClick={() => setPasswordVisible(!passwordVisible)}
                                         edge="end"
                                     >
-                                        {passwordVisible ? <Visibility /> : <VisibilityOff />}
+                                        {passwordVisible ? <Visibility/> : <VisibilityOff/>}
                                     </IconButton>
                                 </InputAdornment>
                             ),
                         }}
-                        sx={{ mb: 2 }}
+                        sx={{mb: 2}}
                         required
                     />
                     <Box
@@ -167,7 +158,7 @@ const RegisterPage = () => {
                                 href={PATHS.login}
                                 size="small"
                                 variant="text"
-                                sx={{ textTransform: 'none', p: 0 }}
+                                sx={{textTransform: 'none', p: 0}}
                             >
                                 Đăng nhập
                             </Button>

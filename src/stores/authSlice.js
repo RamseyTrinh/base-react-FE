@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { getLocalStorage, putLocalStorage, removeLocalStorage } from '@/helpers/localStorageHelper'
-import { LOCAL_STORAGE_KEYS } from '@/constants/localStorageKey'
-import { getCurrentUserAction, loginAction } from './authAction'
+import {createSlice} from '@reduxjs/toolkit'
+import {getLocalStorage, putLocalStorage, removeLocalStorage} from '@/utils/helpers/localStorageHelper'
+import {LOCAL_STORAGE_KEYS} from '@/constants/localStorageKey'
+import {getCurrentUserAction, loginAction} from './authAction'
 
 const authSlice = createSlice({
     name: 'auth',
@@ -37,5 +37,5 @@ const authSlice = createSlice({
     },
 })
 
-export const { logout } = authSlice.actions
+export const {logout} = authSlice.actions
 export default authSlice.reducer

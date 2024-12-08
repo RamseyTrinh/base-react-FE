@@ -1,18 +1,10 @@
-import React, { useState } from 'react'
-import {
-    Card,
-    TextField,
-    Button,
-    Alert,
-    Box,
-    IconButton,
-    InputAdornment,
-    Typography,
-} from '@mui/material'
-import { Visibility, VisibilityOff, LockOutlined, PersonOutline } from '@mui/icons-material'
-import { login } from '@/services/auth'
-import { PATHS } from '@/routers/path'
-import { useNavigate } from 'react-router-dom' // Import useNavigate
+import React, {useState} from 'react'
+import {Alert, Box, Button, Card, IconButton, InputAdornment, TextField, Typography,} from '@mui/material'
+import {LockOutlined, PersonOutline, Visibility, VisibilityOff} from '@mui/icons-material'
+import {PATHS} from '@/routers/path'
+import {useNavigate} from 'react-router-dom'
+import {useDispatch} from "react-redux";
+import {getCurrentUserAction, loginAction} from "@/stores/authAction.js";
 
 const LoginPage = () => {
     const [passwordVisible, setPasswordVisible] = useState(false)
@@ -22,20 +14,20 @@ const LoginPage = () => {
         email: '',
         password: '',
     })
-
+    const dispatch = useDispatch()
     const navigate = useNavigate() // Initialize useNavigate
 
     const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value })
+        setValues({...values, [prop]: event.target.value})
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        setError('')
         setSubmitLoading(true)
         try {
-            await login(values)
-            navigate(PATHS.home) // Redirect to Home Page
+            await dispatch(loginAction(values))
+            await dispatch(getCurrentUserAction())
+            navigate(PATHS.home)
         } catch (e) {
             console.error(e)
             setError(e.message)
@@ -59,8 +51,8 @@ const LoginPage = () => {
                     textAlign: 'center',
                 }}
             >
-                <Typography variant="h5" sx={{ mb: 2 }}>Đăng nhập</Typography>
-                {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
+                <Typography variant="h5" sx={{mb: 2}}>Đăng nhập</Typography>
+                {error && <Alert severity="error" sx={{mb: 2}}>{error}</Alert>}
                 <form onSubmit={handleSubmit}>
                     <TextField
                         fullWidth
@@ -71,11 +63,11 @@ const LoginPage = () => {
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
-                                    <PersonOutline />
+                                    <PersonOutline/>
                                 </InputAdornment>
                             ),
                         }}
-                        sx={{ mb: 2 }}
+                        sx={{mb: 2}}
                         required
                     />
                     <TextField
@@ -88,7 +80,7 @@ const LoginPage = () => {
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
-                                    <LockOutlined />
+                                    <LockOutlined/>
                                 </InputAdornment>
                             ),
                             endAdornment: (
@@ -97,12 +89,12 @@ const LoginPage = () => {
                                         onClick={() => setPasswordVisible(!passwordVisible)}
                                         edge="end"
                                     >
-                                        {passwordVisible ? <Visibility /> : <VisibilityOff />}
+                                        {passwordVisible ? <Visibility/> : <VisibilityOff/>}
                                     </IconButton>
                                 </InputAdornment>
                             ),
                         }}
-                        sx={{ mb: 2 }}
+                        sx={{mb: 2}}
                         required
                     />
                     <Box
@@ -119,7 +111,7 @@ const LoginPage = () => {
                                 href={PATHS.signup}
                                 size="small"
                                 variant="text"
-                                sx={{ textTransform: 'none', p: 0 }}
+                                sx={{textTransform: 'none', p: 0}}
                             >
                                 Đăng ký
                             </Button>
