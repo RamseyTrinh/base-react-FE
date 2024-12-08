@@ -12,9 +12,9 @@ npm run dev
 Before using This project install latest versions of following packages
 
 - [Axios](https://www.npmjs.com/package/axios)
-- Bootstrap - React Strap - MUI - AntD - Tailwind
+- MaterialUI
 - [React Icons](https://react-icons.github.io/react-icons/)
-- React Router Dom [Latest React Router v6](https://reactrouter.com/en/dev/upgrading/reach#install-react-router-v6)
+- React Router Dom
 - Other Required packages
 
 In the project I have just set Up most used folder structure:
