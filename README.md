@@ -1,12 +1,12 @@
 # React JS Advance-Level Folder Structure
 
 How to run the project
-```javascript
+```bash
 npm i
 ```
 and
-```javascript
-npm start
+```bash
+npm run dev
 ```
 
 Before using This project install latest versions of following packages
@@ -19,7 +19,7 @@ Before using This project install latest versions of following packages
 
 In the project I have just set Up most used folder structure:
 
-```javascript
+```bash
 React JS Advanced Folder Structure
 .
 ├── public
@@ -31,101 +31,43 @@ React JS Advanced Folder Structure
     |     ├── images
     |     └── videos
     ├── components
-    |     ├── Button
-    |     |     ├── index.jsx
-    |     |     └── button.module.css
-    |	  ├── inputs
-    |     |     ├── index.jsx
-    |     |     └── inputs.module.css
-    |	  ├── Modal
-    |     |     ├── index.jsx
-    |     |     └── modal.module.css
-    |	  └── Tooltip
-    |           ├── index.jsx
-    |           └── tooltip.module.css
-    |     └── index.js
-    ├──  db
-    |     ├── productsData.js
-    |     └── userData.js
-    ├── layout
+    ├── constants
+    ├── db
+    ├── layouts
     |     ├── Header
     |     |     ├── index.jsx
-    |     |     └── header.module.css
-    |     ├── Navbar.jsx
-    |     |     ├── index.jsx
-    |     |     └── navbar.module.css
     |     ├── Breadcrumbs.jsx
     |     |     ├── index.jsx
-    |     |     └── breadcrumbs.module.css
     |     └── Footer.jsx
     |           ├── index.jsx
-    |           └── footer.module.css
-    |     └── index.js
+    |     └── MainLayout.jsx
     ├── pages
-    |     ├── Home
-    |     |     ├── index.jsx
-    |     |     └── home.module.css
-    |     ├── Login
-    |     |     ├── index.jsx
-    |     |     └── login.module.css
-    |     ├── Signup
-    |     |     ├── index.jsx
-    |     |     └── signup.module.css
-    |     └── About
-    |           ├── index.jsx
-    |           └── about.module.css
-    |     └── index.js
-    ├── Routers
+    ├── routers
+    |     ├── path.js
     |     └── Routers.js
     ├── store
     |     ├── action.js  
     |     ├── reducers.js  
     |     └── store.js
     ├── services
-    |     ├── api.js          // API request functions
-    |     └── dataUtils.js    // Data manipulation functions
+    |     ├── api.js
+    |     └── dataUtils.js
     ├── utils
-    |     ├── constants
-    |     |     ├── Strapi.js
-    |     |     └── Firebase.js
     |     ├── helpers
     |     |     ├── arrays.js
     |     |     └── helpers.js
     |     └── hooks  
     |           └── useIsMobile.js  
     ├── .env
-    ├── app.js
+    ├── App.jsx
     ├── index.css
-    ├── index.js
+    ├── main.jss
 |
 ├── .gitignore
 ├── package-lock.json
 ├── package.json
 └── README.md
 ```
-
-## Folders include
-
-- `Public`
-- `Assests`
-- `Components`
-- `db`
-- `layout`
-- `Pages`
-- `Routes`
-- `services`
-- `store`
-- `utils`
-  - `Constants`
-  - `helpers`
-  - `hooks`
-- `.env.example` / `.env.development`
-- `.eslintrc.cjs`
-- `.prettierrc.cjs`
-- `.jsonconfig.json`
-- `.gitignore`
-- `package.json`
-- `.vite.config.js`
 
 ### Public
 
@@ -199,12 +141,10 @@ In Services we put configuration file, like when you are using google firebase t
 The **"services"** folder is often used to contain code related to making **\*`API`** requests and managing data from external sources. This folder helps separate the concerns of your application by isolating data fetching and manipulation logic from the components that render the UI.
 
 ```javascript
-// services/apiService.js
-import axios from 'axios';
-
-export function fetchUserData(userId) {
-  return axios.get(`/api/users/${userId}`);
-}
+// services/auth.js
+export const register = async (payload) => {
+    return await http.post(AUTH_API.REGISTER, payload);
+};
 ```
 
 ### Store
@@ -248,7 +188,7 @@ export function formatDate(date) {
 Env files are used to store sensitive credentials such as API keys.
 
 ```javascript
-REACT_APP_API_URL=http://localhost:3001
+REACT_APP_API_URL=http://localhost:8000
 REACT_APP_DEBUG_MODE=true
 ```
 
@@ -280,7 +220,7 @@ ESLint, which is a popular tool for linting and enforcing coding style and best 
 ```javascript
 module.exports = {
   printWidth: 80,
-  tabWidth: 2,
+  tabWidth: 3,
   singleQuote: true,
   trailingComma: 'es5',
 };
